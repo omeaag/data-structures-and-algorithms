@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "stack_arr.h": "c",
+    "stack_linkedlist.h": "c",
+    "queue_arr.h": "c",
+    "stdlib.h": "c"
+  }
+}
