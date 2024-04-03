@@ -10,6 +10,6 @@ int recursion(int sayi){
 }
 
 int main(){
-    int sonuc = recursion(7);
+    int sonuc = recursion(6);
     printf("%d ", sonuc);
 }
