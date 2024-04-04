@@ -43,17 +43,18 @@ int bul(node * agac, int aranan){
 }
 
 int max(node * agac){
-    while (agac->sag != NULL)
+    if (agac->sag)
     {
-        agac = agac->sag;
+        return max(agac->sag);
     }
+    
     return agac->data;
 }
 
 int min(node * agac){
-    while (agac->sol != NULL)
+    if (agac->sol)
     {
-        agac = agac->sol;
+        return min(agac->sol);
     }
     return agac->data;
 }
