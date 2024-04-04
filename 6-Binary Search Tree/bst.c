@@ -67,19 +67,55 @@ void dolas(node * agac){
     dolas(agac ->sag);
 }
 
-int main(){
-    node * root = NULL;
-    root = ekle(root, 15);
-    root = ekle(root, 95);
-    root = ekle(root, 25);
-    root = ekle(root, 45);
-    root = ekle(root, 88);
-    root = ekle(root, 102);
-    root = ekle(root, 5);
-    dolas(root);
-    printf("\n%d ", bul(root,10));
-    printf("\n%d ", bul(root,45));
+node * sil(node * agac, int x){
+    if(agac == NULL)
+        return NULL;
 
-    printf("\n%d ", min(root));
-    printf("\n%d ", max(root));
+    if(agac->data == x){
+        if(agac->sol==NULL && agac->sag==NULL)
+            return NULL;
+        if(agac->sag != NULL){
+            agac->data = min(agac->sag);
+            agac-> sag = sil(agac->sag, min(agac->sag));
+            return agac;
+        }
+
+        agac ->data = max(agac->sol);
+        agac->sol = sil(agac->sol, max(agac->sol));
+        return agac;
+
+    }
+    if(agac->data < x){
+        agac->sag = sil(agac->sag,x);
+        return agac;
+    }
+
+    agac->sol = sil(agac->sol, x);
+    return agac;
+}
+
+int main(){
+    node * agac = NULL;
+    agac = ekle(agac, 16);
+    agac = ekle(agac, 9);
+    agac = ekle(agac, 23);
+    agac = ekle(agac, 5);
+    agac = ekle(agac, 10);
+    agac = ekle(agac, 1);
+    agac = ekle(agac, 6);
+    agac = ekle(agac, 12);
+    agac = ekle(agac, 13);
+    agac = ekle(agac, 19);
+    agac = ekle(agac, 27);
+    agac = ekle(agac, 24);
+
+    dolas(agac);
+    printf("\n%d ", bul(agac,10));
+    printf("\n%d ", bul(agac,45));
+
+    printf("\n%d ", min(agac));
+    printf("\n%d ", max(agac));
+    printf("\n");
+    agac = sil(agac,16);
+    dolas(agac);
 }
